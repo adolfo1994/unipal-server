@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'friendship',
     'rest_framework',
     'corsheaders',
+    'django_extensions',
     # Local
     'accounts',
     'academic',
