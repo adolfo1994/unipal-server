@@ -25,7 +25,7 @@ SECRET_KEY = '6o)!-swyj&!&bfhg=96g--r%y!iumg495-r!a+a4kw8qux(ei7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['unipal-api.public.ndev.tech']
+ALLOWED_HOSTS = ['unipal-api.public.ndev.tech', 'localhost']
 
 
 # Application definition
