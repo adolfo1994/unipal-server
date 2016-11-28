@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'django_extensions',
+    'push_notifications',
     # Local
     'accounts',
     'academic',
@@ -140,3 +141,7 @@ MEDIA_ROOT = BASE_DIR + '/../media/'
 # CORS MIDDLEWARE
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+PUSH_NOTIFICATIONS_SETTINGS = {
+        "GCM_API_KEY": "unipalapikey",
+}

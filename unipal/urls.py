@@ -13,10 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from push_notifications.api.rest_framework import GCMDeviceAuthorizedViewSet
+
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from rest_framework.routers import DefaultRouter
+
+
+router = DefaultRouter()
+router.register(r'device/gcm', GCMDeviceAuthorizedViewSet)
+
+
 urlpatterns = [
+    url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
     url(r'^jet/', include('jet.urls', 'jet')),
     url(r'^friendship/', include('friendship.urls')),
