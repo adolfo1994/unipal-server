@@ -20,6 +20,15 @@ class TodoSerializer(serializers.ModelSerializer):
         model = Todo
         fields = ('due_date', 'priority', 'description', 'subject', 'user')
 
+    def create(self, validated_data):
+        subject_data = validated_data.pop('subject')
+        name = subject_data.get('name')
+        semester = subject_data.get('semester')
+        subject, created = Subject.objects.get_or_create(
+            name=name, semester=semester)
+        validated_data['subject'] = subject
+        return super(TodoSerializer, self).create(validated_data)
+
 
 class ScheduleBlockSerializer(serializers.ModelSerializer):
 
