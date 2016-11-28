@@ -50,6 +50,6 @@ class Command(BaseCommand):
                             "Nada mas no vas a faltar a %s en %s" % (
                                 block.schedule.subject_group.subject.name,
                                 block.location,
-                            )
+                            ), extra={'title': 'Recordatorio de clase'}
                         )
         logger.info("Done!")
