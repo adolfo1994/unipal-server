@@ -1,5 +1,7 @@
 import logging
 
+from datetime import datetime, date, timedelta
+
 from django.core.management.base import BaseCommand
 
 from academic.models import ScheduleBlock
@@ -20,8 +22,16 @@ class Command(BaseCommand):
         )
 
     def send_notification(self, block):
-        # TODO: check hour range
-        return True
+        # FIXME: If no notifications are sent is because this function is wrong
+        if (
+            (datetime.now().weekday() == block.day) and
+            (
+                datetime.combine(date.today(), block.start_time) -
+                datetime.now()
+            ).min < timedelta(minutes=45)
+        ):
+            return True
+        return False
 
     def handle(self, *args, **options):
         # Setting logging
