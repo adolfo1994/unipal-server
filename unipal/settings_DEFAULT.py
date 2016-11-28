@@ -32,6 +32,11 @@ LOGGING = {
             'handlers': ['console'],
             'propagate': True,
             'level': 'DEBUG',
+        },
+        'default': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'DEBUG',
         }
     },
 }
