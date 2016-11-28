@@ -17,4 +17,5 @@ def follower_created(sender, instance=None, **kwargs):
 
     # FUTURE: link GCMDevice to a User
     for device in GCMDevice.objects.all():
-        device.send_message("Tienes un nuevo seguidor")
+        device.send_message(
+            "Tienes un nuevo seguidor", extra={'title': 'Nuevo Seguidor!'})
