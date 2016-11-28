@@ -42,6 +42,7 @@ class ScheduleBlock(models.Model):
     start_time = models.TimeField()
     end_time = models.TimeField()
     schedule = models.ForeignKey(Schedule)
+    location = models.CharField(max_length=250)
 
 
 class Todo(models.Model):
@@ -57,3 +58,4 @@ class Todo(models.Model):
     subject = models.ForeignKey(Subject)
     user = models.ForeignKey(User)
     done = models.BooleanField(default=False)
+
