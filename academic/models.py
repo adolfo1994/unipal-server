@@ -23,6 +23,10 @@ class SubjectGroup(models.Model):
 class Schedule(models.Model):
     subject_group = models.ForeignKey(SubjectGroup)
 
+    @property
+    def blocks(self):
+        return self.scheduleblock_set.all()
+
 
 class ScheduleBlock(models.Model):
     DAY_CHOICES = (
@@ -37,6 +41,7 @@ class ScheduleBlock(models.Model):
     day = models.PositiveSmallIntegerField(choices=DAY_CHOICES)
     start_time = models.TimeField()
     end_time = models.TimeField()
+    schedule = models.ForeignKey(Schedule)
 
 
 class Todo(models.Model):
@@ -51,3 +56,4 @@ class Todo(models.Model):
     description = models.CharField(max_length=250)
     subject = models.ForeignKey(Subject)
     user = models.ForeignKey(User)
+    done = models.BooleanField(default=False)
