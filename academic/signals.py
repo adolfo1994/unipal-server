@@ -15,6 +15,5 @@ def todo_created(sender, instance=None, **kwargs):
     :param instance: Instance of the model
     """
 
-    device = GCMDevice.objects.last()
-    if device is not None:
+    for device in GCMDevice.objects.all():
         device.send_message("Han agregado una nueva tarea!")

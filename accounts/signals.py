@@ -5,6 +5,7 @@ from push_notifications.models import GCMDevice
 from friendship.models import Follow
 
 
+# FUTURE: move to devices app
 @receiver(post_save, sender=Follow, dispatch_uid='follower_created')
 def follower_created(sender, instance=None, **kwargs):
     """
@@ -15,6 +16,5 @@ def follower_created(sender, instance=None, **kwargs):
     """
 
     # FUTURE: link GCMDevice to a User
-    device = GCMDevice.objects.last()
-    if device is not None:
+    for device in GCMDevice.objects.all():
         device.send_message("Tienes un nuevo seguidor")
