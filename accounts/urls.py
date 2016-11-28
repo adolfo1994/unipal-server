@@ -15,7 +15,11 @@ router.register(
     rest_views.FollowViewSet,
     base_name='follow'
 )
-
+router.register(
+    r'UserFollowing',
+    rest_views.UserFollowViewSet,
+    base_name='user-follow'
+)
 
 urlpatterns = [
     url(r'^', include(router.urls))
