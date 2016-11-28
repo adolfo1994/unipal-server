@@ -47,8 +47,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'push_notifications',
     # Local
-    'accounts',
-    'academic',
+    'accounts.apps.AccountsConfig',
+    'academic.apps.AcademicConfig',
 ]
 
 MIDDLEWARE = [

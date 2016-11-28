@@ -16,6 +16,4 @@ router.register(
     base_name='schedule'
 )
 
-urlpatterns = [
-    url(r'^', include(router.urls))
-]
+urlpatterns = router.urls
