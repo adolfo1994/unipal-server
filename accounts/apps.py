@@ -7,4 +7,4 @@ class AccountsConfig(AppConfig):
     name = 'accounts'
 
     def ready(self):
-        from accounts.signals import new_follower_created
+        from accounts.signals import follower_created
