@@ -9,15 +9,29 @@ class Semester(models.Model):
     end_date = models.DateField()
     slug = models.SlugField()
 
+    def __unicode__(self):
+        return self.slug
+
 
 class Subject(models.Model):
     name = models.CharField(max_length=250)
     semester = models.ForeignKey(Semester)
 
+    def __unicode__(self):
+        return "{name} - {semester}".format(
+            name=self.name, semester=self.semester.slug
+        )
+
 
 class SubjectGroup(models.Model):
     subject = models.ForeignKey(Subject)
     users = models.ManyToManyField(User)
+
+    def __unicode__(self):
+        return "{name} - {slug}".format(
+            name=self.subject.name,
+            slug=self.subject.semester.slug
+        )
 
 
 class Schedule(models.Model):
@@ -44,6 +58,11 @@ class ScheduleBlock(models.Model):
     schedule = models.ForeignKey(Schedule)
     location = models.CharField(max_length=250)
 
+    def __unicode__(self):
+        return "{day} - {start} - {end}".format(
+            day=self.day, start=self.start_time, end=self.end_time
+        )
+
 
 class Todo(models.Model):
     PRIORITY_CHOICES = (
@@ -59,3 +78,8 @@ class Todo(models.Model):
     user = models.ForeignKey(User)
     done = models.BooleanField(default=False)
 
+    def __unicode__(self):
+        return "{subject} - {user}".format(
+            subject=self.subject.name,
+            user=self.user.username
+        )
