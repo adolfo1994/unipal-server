@@ -16,4 +16,5 @@ def todo_created(sender, instance=None, **kwargs):
     """
 
     for device in GCMDevice.objects.all():
-        device.send_message("Han agregado una nueva tarea!")
+        device.send_message(
+            "Han agregado una nueva tarea!", extra={'title': 'Nueva Tarea!'})
