@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # Local
     'accounts.apps.AccountsConfig',
     'academic.apps.AcademicConfig',
+    'device.apps.DeviceConfig'
 ]
 
 MIDDLEWARE = [

@@ -7,14 +7,9 @@ from academic.models import Todo, ScheduleBlock, Schedule
 
 class TodoSerializer(serializers.ModelSerializer):
 
-    user = serializers.IntegerField(required=False)
-
     class Meta:
         model = Todo
         fields = ('due_date', 'priority', 'description', 'subject', 'user')
-
-    def validate(self, attrs):
-        attrs['user'] = User.objects.last().id
 
 
 class ScheduleBlockSerializer(serializers.ModelSerializer):

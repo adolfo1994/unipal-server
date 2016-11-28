@@ -21,8 +21,7 @@ from django.contrib import admin
 from rest_framework.routers import DefaultRouter
 
 
-router = DefaultRouter()
-router.register(r'device/gcm', GCMDeviceAuthorizedViewSet)
+
 
 
 urlpatterns = [
@@ -31,5 +30,5 @@ urlpatterns = [
     url(r'^friendship/', include('friendship.urls')),
     url(r'api/academic/', include('academic.urls')),
     url(r'api/accounts/', include('accounts.urls')),
-    url(r'api/', include(router.urls)),
+    url(r'api/device/', include('device.urls'))
 ]
