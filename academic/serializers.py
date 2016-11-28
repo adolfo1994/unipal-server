@@ -2,10 +2,19 @@ from django.contrib.auth.models import User
 
 from rest_framework import serializers
 
-from academic.models import Todo, ScheduleBlock, Schedule
+from academic.models import Todo, ScheduleBlock, Schedule, Subject
+
+
+class SubjectSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Subject
+        fields = ('name', 'semester')
 
 
 class TodoSerializer(serializers.ModelSerializer):
+
+    subject = SubjectSerializer()
 
     class Meta:
         model = Todo
